@@ -9,6 +9,7 @@
                 :placeholder="`Search for ${subPage}`"
                 :aria-label="`Search for ${subPage}`"
                 @keydown.enter="search"
+                @input="closeSearchPanel"
             />
             <div
                 v-if="searchingIsLoaded"
@@ -45,14 +46,17 @@
                 </button>
             </div>
         </div>
-        <b-list-group class="entities__list">
+        <b-list-group>
             <b-list-group-item
                 v-for="item in pageEntities"
                 :key="item.name || item.title"
-                class="my-2 font-weight-bolder entities__list-item"
+                class="my-2 font-weight-bolder"
             >
                 {{ item.name || item.title }}
             </b-list-group-item>
+            <div v-if="entitiesAreLoading" class="spinner-border mx-auto mb-3" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
             <b-button v-if="nextUrl" class="mx-auto" @click="fetchData">
                 Load More
             </b-button>
@@ -74,6 +78,7 @@ export default {
             searchVariants: [],
             nextUrl: `https://swapi.dev/api/${this.entities}/`,
             searchingIsLoaded: false,
+            entitiesAreLoading: false,
         }
     },
     computed: {
@@ -89,6 +94,7 @@ export default {
     },
     methods: {
         fetchData() {
+            this.entitiesAreLoading = true
             this.$axios
                 .$get(this.nextUrl)
                 .then((result) => {
@@ -101,6 +107,9 @@ export default {
                 .catch((err) => {
                     // eslint-disable-next-line no-console
                     console.log(err)
+                })
+                .finally(() => {
+                    this.entitiesAreLoading = false
                 })
         },
         search() {
