@@ -54,7 +54,11 @@
             >
                 {{ item.name || item.title }}
             </b-list-group-item>
-            <div v-if="entitiesAreLoading" class="spinner-border mx-auto mb-3" role="status">
+            <div
+                v-if="entitiesAreLoading"
+                class="spinner-border mx-auto mb-3"
+                role="status"
+            >
                 <span class="sr-only">Loading...</span>
             </div>
             <b-button v-if="nextUrl" class="mx-auto" @click="fetchData">
