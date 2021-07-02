@@ -19,6 +19,7 @@
     "net": "^1.0.2",
     "npm-force-resolutions": "0.0.10",
     "nuxt": "^2.15.7",
+    "sass-loader": "^12.1.0",
     "tls": "0.0.1"
   },
   "devDependencies": {
