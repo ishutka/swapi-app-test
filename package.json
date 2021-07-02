@@ -15,7 +15,11 @@
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "css-what": "^5.0.1",
+    "net": "^1.0.2",
+    "npm-force-resolutions": "0.0.10",
+    "nuxt": "^2.15.7",
+    "tls": "0.0.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
@@ -25,7 +29,12 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
+    "node-sass": "^6.0.1",
     "prettier": "^2.3.2",
+    "sass-loader": "^10.2.0",
     "swapi-node": "^0.6.0"
+  },
+  "resolutions": {
+    "css-what": "^5.0.1"
   }
 }
